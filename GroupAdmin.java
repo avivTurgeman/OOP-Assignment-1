@@ -3,11 +3,13 @@ package observer;
 import java.util.ArrayList;
 
 /**
+ * (I will finish this!!!!!!!!!!!!!!!!!!)
+ *
  * This class represents the 'Observable' side in the Observer Design Pattern.
  * Which means that this class registers members to itself and holds an UndoableStringBuilder variable.
  * Each member points to this class UndoableStringBuilder variable so that each time this UndoableStringBuilder
- * will change, this class will inform every one of her members.
- * implements the Sender interface
+ * changes, this class will inform every one of her members about it and update their UndoableStringBuilder in accordance.
+ *
  */
 public class GroupAdmin implements Sender {
 
@@ -17,7 +19,7 @@ public class GroupAdmin implements Sender {
     private final String name;
 
     /**
-     *
+     * Yasmin
      * @param name
      */
     public GroupAdmin(String name) {
@@ -27,7 +29,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Aviv
      * @param obj
      */
     @Override
@@ -40,7 +42,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Yasmin
      * @param obj
      */
     @Override
@@ -50,7 +52,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Aviv
      * @param offset
      * @param obj
      */
@@ -61,7 +63,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Yasmin
      * @param obj
      */
     @Override
@@ -71,7 +73,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Aviv
      * @param start
      * @param end
      */
@@ -82,7 +84,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Yasmin
      */
     @Override
     public void undo() {
@@ -91,7 +93,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Aviv
      * @param start
      * @param end
      * @param str
@@ -102,7 +104,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Yasmin
      */
     public void notifyMembers() {
         for (Member m : members) {
@@ -111,7 +113,7 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
+     * Aviv
      * @param usb
      */
     public void setUndoableStringBuilder(UndoableStringBuilder usb) {
