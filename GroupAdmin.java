@@ -31,18 +31,40 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     * Aviv
-     * @param obj
+     * A method that takes a Member object and adds it to the member list (members)
+     * of this GroupAdmin if he is not already in there.
+     * this method uses the <b><i>notifyMembers()</i></b> method to make this member's UndoableStringBuilder
+     * to point to the same UndoableStringBuilder of this GroupAdmin.
+     * <p>
+     * once the member is register, this method will print out:
+     * <p>
+     * <b>"Member number -> <i>{member number in members}</i> added to <i>{GroupAdmin's name}</i>."</b>
+     * </p>
+     * </p>
+     * <p>
+     * if a member is already register, this method will print out:
+     * <p>
+     * "This Member is already register."
+     * </p>
+     * </p>
+     * @param obj a Member object to register
      */
     @Override
     public void register(Member obj) {
-        members.add(obj);
+        if(!members.contains(obj)){
+            members.add(obj);
 
-        int index = members.indexOf(obj);
+            int index = members.indexOf(obj);
 
-        notifyMembers();
+            notifyMembers();
 
-        System.out.println("Member number -> " + (index + 1) + ", added to " + name);
+            System.out.println("Member number -> " + (index + 1) + ", added to " + name + ".");
+
+        }
+
+        else {
+            System.out.println("This Member is already register.");
+        }
     }
 
     /**
@@ -51,9 +73,16 @@ public class GroupAdmin implements Sender {
      */
     @Override
     public void unregister(Member obj) {
-        int index = members.indexOf(obj);
-        members.remove(index);
-        System.out.println("Member number -> " + (index + 1) + ", removed from " + name);
+        if(members.contains(obj)){
+            int index = members.indexOf(obj);
+            members.remove(index);
+            System.out.println("Member number -> " + (index + 1) + ", removed from " + name + ".");
+        }
+
+        else{
+            System.out.println("This Member is not register.");
+        }
+
     }
 
     /**
