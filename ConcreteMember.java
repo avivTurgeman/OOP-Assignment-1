@@ -1,7 +1,11 @@
 package observer;
 
 /**
- * Yasmin
+ * Concrete implementation of the Member interface.
+ * Represents a Member of a group administered by a GroupAdmin.
+ * Can register and receive updates from a GroupAdmin.
+ * A ConcreteMember has a name and a reference to a GroupAdmin,
+ * and maintains its own copy of the group's UndoableStringBuilder object.
  */
 public class ConcreteMember implements Member {
 
@@ -25,8 +29,10 @@ public class ConcreteMember implements Member {
     }
 
     /**
-     * Yasmin
-     * @param usb
+     * This method updates the UndoableStringBuilder object of the ConcreteMember
+     * with the given UndoableStringBuilder object.
+     *
+     * @param usb the new UndoableStringBuilder object
      */
     @Override
     public void update(UndoableStringBuilder usb) {
@@ -34,7 +40,7 @@ public class ConcreteMember implements Member {
     }
 
     /**
-     * Yasmin
+     * This method prints the current state of the ConcreteMember's UndoableStringBuilder object to the console.
      */
     public void printUSB(){
         System.out.println(name + ": " + usb.toString());

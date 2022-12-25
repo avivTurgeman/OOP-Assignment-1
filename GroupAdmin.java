@@ -21,8 +21,9 @@ public class GroupAdmin implements Sender {
     private final String name;
 
     /**
-     * Yasmin
-     * @param name
+     * The following constructor constructs a new GroupAdmin object with the given name,
+     * it initializes the members and usb fields.
+     * @param name the name of the GroupAdmin.
      */
     public GroupAdmin(String name) {
         members = new ArrayList<Member>();
@@ -68,8 +69,11 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     * Yasmin
-     * @param obj
+     * This method unregisters a Member from the GroupAdmin.
+     * If the given Member is not registered with the GroupAdmin a message is printed indicating this.
+     * Otherwise, the Member is removed from the list of registered members and
+     * a message is printed indicating that the Member has been removed.
+     * @param obj the member to be unregistered.
      */
     @Override
     public void unregister(Member obj) {
@@ -97,8 +101,8 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     * Yasmin
-     * @param obj
+     * This method Appends a string to the UndoableStringBuilder object associated with the GroupAdmin.
+     * @param obj the string to be appended.
      */
     @Override
     public void append(String obj) {
@@ -116,7 +120,8 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     * Yasmin
+     * This method Performs an undo operation on the
+     * UndoableStringBuilder object associated with the GroupAdmin.
      */
     @Override
     public void undo() {
@@ -134,7 +139,9 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     * Yasmin
+     * Notifies all registered Members of the GroupAdmin of an update to the UndoableStringBuilder object.
+     * The update method of each Member is called with the current state of the
+     * UndoableStringBuilder object as an argument.
      */
     public void notifyMembers() {
         for (Member m : members) {
