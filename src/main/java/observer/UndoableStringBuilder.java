@@ -3,9 +3,14 @@ package observer;
 import java.util.Stack;
 
 public class UndoableStringBuilder {
+    /**
+     * This class improves thr build in java <b><i>StringBuilder</i></b> class
+     */
 
     private StringBuilder usb;
     private Stack<StringBuilder> stack;
+
+    private int actions;
 
     /**
      * Empty constructor
@@ -13,16 +18,18 @@ public class UndoableStringBuilder {
     public UndoableStringBuilder() {
         usb = new StringBuilder();
         stack = new Stack<>();
+        actions = 0;
     }
 
     /**
-     * the str will append as the UndoableStringBuilder's String value
+     * The str will append as the UndoableStringBuilder's String value
      *
      * @param str a String
      */
     public UndoableStringBuilder(String str) {
         usb = new StringBuilder(str);
         stack = new Stack<>();
+        actions = 0;
     }
 
     /**
@@ -36,14 +43,31 @@ public class UndoableStringBuilder {
         usb = new StringBuilder(copy.usb);
         stack = new Stack<>();
         stack.addAll(copy.stack);
+        this.actions = copy.actions;
     }
 
     /**
-     * Appends the specified string to this StringBuilder characters sequence.
-     * The characters of the String argument are appended, in order,
-     * increasing the length of this StringBuilder characters sequence by the length
+     * Advanced Copy Constructor
+     * the constructor will copy the field values of a given
+     * UndoableStringBuilder to new addresses but <b><i>this actions</i></b> value will
+     * be different according to the <b><i>actions</i></b> given parameter
+     *
+     * @param copy the UndoableStringBuilder to copy from
+     * @param actions an int
+     */
+    public UndoableStringBuilder(UndoableStringBuilder copy, int actions) {
+        usb = new StringBuilder(copy.usb);
+        stack = new Stack<>();
+        stack.addAll(copy.stack);
+        this.actions = actions;
+    }
+
+    /**
+     * Appends the specified string to this <b><i>StringBuilder</i></b> characters sequence.
+     * The characters of the <b><i>String</i></b> argument are appended, in order,
+     * increasing the length of this <b><i>StringBuilder</i></b> characters sequence by the length
      * of the argument.
-     * 
+     *
      * @param str a String
      * @return This Object
      */
@@ -51,6 +75,7 @@ public class UndoableStringBuilder {
         StringBuilder temp = new StringBuilder(usb);
         stack.add(temp);
         usb.append(str);
+        actions++;
         return this;
     }
 
@@ -62,7 +87,7 @@ public class UndoableStringBuilder {
      * StringBuilder characters sequence if no such character exists. If start is
      * equal to end, no
      * changes are made.
-     * 
+     *
      * @param start The beginning index, inclusive.
      * @param end   The ending index, exclusive.
      * @return This Object
@@ -72,6 +97,7 @@ public class UndoableStringBuilder {
             StringBuilder temp = new StringBuilder(usb);
             stack.add(temp);
             usb.delete(start, end);
+            actions++;
         } catch (StringIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
@@ -85,7 +111,7 @@ public class UndoableStringBuilder {
      * that position and increasing the length of this StringBuilder characters
      * sequence by the length of the
      * argument.
-     * 
+     *
      * @param offset the offset
      * @param str    a string
      * @return This Object
@@ -95,6 +121,7 @@ public class UndoableStringBuilder {
             StringBuilder temp = new StringBuilder(usb);
             stack.add(temp);
             usb.insert(offset, str);
+            actions++;
         } catch (StringIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
@@ -110,7 +137,7 @@ public class UndoableStringBuilder {
      * sequence if no such
      * character exists. First the characters in the substring are removed and then
      * the specified String is inserted at start.
-     * 
+     *
      * @param start The beginning index, inclusive.
      * @param end   The ending index, exclusive.
      * @param str   String that will replace previous contents.
@@ -121,11 +148,13 @@ public class UndoableStringBuilder {
             StringBuilder temp = new StringBuilder(usb);
             stack.add(temp);
             usb.replace(start, end, str);
+            actions++;
         } catch (StringIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
         return this;
     }
+
 
     /**
      * Causes this StringBuilder character sequence to be replaced by the reverse of
@@ -148,6 +177,7 @@ public class UndoableStringBuilder {
         StringBuilder temp = new StringBuilder(usb);
         stack.add(temp);
         usb.reverse();
+        actions++;
         return this;
     }
 
@@ -156,9 +186,19 @@ public class UndoableStringBuilder {
      * if there is no former form, the UndoableStringBuilder will remain the same.
      */
     public void undo() {
-        if (!(stack.isEmpty())) {
+        if ((!(stack.isEmpty())) && actions > 1) {
             usb = stack.pop();
+            actions--;
         }
+        else if(actions == 1){
+            actions--;
+            usb.replace(0,usb.toString().length(),"");
+            stack.clear();
+        }
+    }
+
+    public int length(){
+        return usb.length();
     }
 
     public String toString() {
