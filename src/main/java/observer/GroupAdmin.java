@@ -83,7 +83,7 @@ public class GroupAdmin implements Sender {
         }
 
         else {
-            System.out.println("This Member is already register!!!!");
+            System.out.println("This Member is already registered!!!!");
         }
     }
 
@@ -112,11 +112,11 @@ public class GroupAdmin implements Sender {
             obj.update(new UndoableStringBuilder(this.usb, actionsPerMember.get(index)));
             actionsPerMember.remove(index);
 
-            System.out.println("Member unregister successfully");
+            System.out.println("Member unregistered successfully");
         }
 
         else{
-            System.out.println("This Member is not register!!!!");
+            System.out.println("This Member is already unregistered!!!!");
         }
 
     }
@@ -234,6 +234,9 @@ public class GroupAdmin implements Sender {
         return name;
     }
 
+    /**
+     *
+     */
     public void printMembers(){
 
         String membersList = name + " members:\n";

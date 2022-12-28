@@ -27,7 +27,7 @@ public class Tests {
         // Registering the 1st Member
         ConcreteMember member1 = new ConcreteMember(groupAdmin,"member1");
 
-        System.out.println("\n\n(member1 UndoableStringBuilder will not be the same as " + groupAdmin.getName() + " members UndoableStringBuilder when register,");
+        System.out.println("\n\n(member1 UndoableStringBuilder will not be the same as " + groupAdmin.getName() + " members UndoableStringBuilder when registered,");
         System.out.println(" once we use one of the UndoableStringBuilder methods on " + groupAdmin.getName() + ", member1 UndoableStringBuilder will update)");
         System.out.println("---------------------------------------------------------------------------------------------------------------");
         System.out.println(groupAdmin.getName() + " UndoableStringBuilder String value: " + groupAdmin.getUsb().toString());
@@ -57,7 +57,7 @@ public class Tests {
         // Registering the 2nd Member
         ConcreteMember member2 = new ConcreteMember(groupAdmin,"member2");
 
-        System.out.println("\n\n(member2 UndoableStringBuilder will not be the same as " + groupAdmin.getName() + " members UndoableStringBuilder when register,");
+        System.out.println("\n\n(member2 UndoableStringBuilder will not be the same as " + groupAdmin.getName() + " members UndoableStringBuilder when registered,");
         System.out.println(" once we use one of the UndoableStringBuilder methods on " + groupAdmin.getName() + ", member2 UndoableStringBuilder will update)");
         System.out.println("---------------------------------------------------------------------------------------------------------------");
         System.out.println(groupAdmin.getName() + " UndoableStringBuilder String value: " + groupAdmin.getUsb().toString());
@@ -94,7 +94,7 @@ public class Tests {
         // Registering the 3rd Member
         ConcreteMember member3 = new ConcreteMember(groupAdmin,"member3");
 
-        System.out.println("\n\n(member3 UndoableStringBuilder will not be the same as " + groupAdmin.getName() + " members UndoableStringBuilder when register,");
+        System.out.println("\n\n(member3 UndoableStringBuilder will not be the same as " + groupAdmin.getName() + " members UndoableStringBuilder when registered,");
         System.out.println(" once we use one of the UndoableStringBuilder methods on " + groupAdmin.getName() + ", member3 UndoableStringBuilder will update)");
         System.out.println("---------------------------------------------------------------------------------------------------------------");
         System.out.println(groupAdmin.getName() + " UndoableStringBuilder String value: " + groupAdmin.getUsb().toString());
