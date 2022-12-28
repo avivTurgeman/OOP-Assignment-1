@@ -9,9 +9,11 @@ public class ConcreteMember implements Member {
      * and maintains its own copy of the group's UndoableStringBuilder object pointer.
      */
 
+    private final Sender groupAdmin;
+
     private UndoableStringBuilder usb;
-    private Sender groupAdmin;
-    private String name;
+
+    private final String name;
 
 
     /**

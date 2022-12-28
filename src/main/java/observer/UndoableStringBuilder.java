@@ -197,9 +197,6 @@ public class UndoableStringBuilder {
         }
     }
 
-    public int length(){
-        return usb.length();
-    }
 
     public String toString() {
         return usb.toString();
