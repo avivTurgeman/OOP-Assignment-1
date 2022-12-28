@@ -77,4 +77,8 @@ public class ConcreteMember implements Member {
         return usb;
     }
 
+    public String toString(){
+        return this.name;
+    }
+
 }

@@ -59,6 +59,9 @@ public class GroupAdmin implements Sender {
      * When a Member register, the actionsPerMember list adds to its list the integer 0 which reference that
      * this added Member was aware to 0 actions that the GroupAdmin made.
      *</p>
+     * <p>
+     * When a Member register, a message also is printed indicating that the Member has been registered successfully.
+     * </p>
      * This method uses the <b><i>notifyMembers()</i></b> method so these member's UndoableStringBuilder
      * will point to the same UndoableStringBuilder as this GroupAdmin's.
      * <p>
@@ -75,10 +78,12 @@ public class GroupAdmin implements Sender {
             members.add(obj);
 
             actionsPerMember.add(0);
+
+            System.out.println("Member registered successfully.");
         }
 
         else {
-            System.out.println("This Member is already register.");
+            System.out.println("This Member is already register!!!!");
         }
     }
 
@@ -89,8 +94,9 @@ public class GroupAdmin implements Sender {
      * </p>
      * <p>
      * Otherwise, the Member is removed from the registered members list,
-     * his actions counter indication in the actionsPerMember list removed as well.
+     * and a message is printed indicating that the Member has been unregistered successfully.
      * </p>
+     * Once a member unregisters, his actions counter indication in the actionsPerMember list removed as well.
      * then an update is being sent to him with a new copy of the GroupAdmin's UndoableStringBuilder, so he will no more
      * keep track of the changes being made in the GroupAdmin, but he will be aware to the changes that has being made
      * while he was a member.
@@ -105,10 +111,12 @@ public class GroupAdmin implements Sender {
 
             obj.update(new UndoableStringBuilder(this.usb, actionsPerMember.get(index)));
             actionsPerMember.remove(index);
+
+            System.out.println("Member unregister successfully");
         }
 
         else{
-            System.out.println("This Member is not register.");
+            System.out.println("This Member is not register!!!!");
         }
 
     }
@@ -200,12 +208,40 @@ public class GroupAdmin implements Sender {
 
     /**
      * This method allows us to get this UndoableStringBuilder
-     * to use for our tests.
+     * to use for our Tests.
      *
      * @return this UndoableStringBuilder
      */
     public UndoableStringBuilder getUsb(){
         return usb;
+    }
+
+    /**
+     * This method allows us to get this members list to use for our Tests.
+     *
+     * @return this ArrayList of members
+     */
+    public ArrayList<Member> getMembers() {
+        return members;
+    }
+
+    /**
+     * This method allows us to get this GroupAdmin's name to use for our Tests.
+     *
+     * @return this GroupAdmin's name
+     */
+    public String getName() {
+        return name;
+    }
+
+    public void printMembers(){
+
+        String membersList = name + " members:\n";
+        for(int i = 0; i < members.size(); i++){
+            membersList += "" + (i+1) + ") " + members.get(i) + "\n";
+        }
+
+        System.out.println(membersList);
     }
 
     /**
